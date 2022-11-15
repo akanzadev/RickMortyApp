@@ -5,7 +5,6 @@ import {
   Container,
   Grid,
   Pagination,
-  Stack,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 
