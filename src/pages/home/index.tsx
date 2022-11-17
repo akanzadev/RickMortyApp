@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 import { characters } from "../../api/characters";
 import { CardComponent, HeaderComponent } from "../../components";
-import { TypeCharacter } from "./interface/character.interface";
+import { TypeCharacter } from "./interfaces/character.interface";
 
 export const HomePage: React.FC<{}> = () => {
   const [allCharacters, setAllCharacters] = useState<TypeCharacter[] | null>(

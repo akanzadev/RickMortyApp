@@ -7,6 +7,7 @@ import {
   Button,
   Divider,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 type CardProps = {
   image: string;
@@ -21,6 +22,8 @@ export const CardComponent: React.FC<CardProps> = ({
   species,
   status,
 }) => {
+  let navigate = useNavigate();
+
   return (
     <Card>
       <CardMedia
@@ -38,8 +41,22 @@ export const CardComponent: React.FC<CardProps> = ({
         <Typography sx={{ mt: 1.5 }}>Estado: {status}</Typography>
       </CardContent>
       <CardActions>
-        <Button fullWidth variant="contained" size="small">
-          Share
+        <Button
+          fullWidth
+          variant="contained"
+          size="small" /* 
+          onClick={() => navigate(`/character/${id}`)} */
+        >
+          Learn More
+        </Button>
+        <Button
+          fullWidth
+          variant="outlined"
+          size="small"
+          /* disabled={disabledBtn}
+          onClick={handleAddToCart} */
+        >
+          Add to cart
         </Button>
       </CardActions>
     </Card>
