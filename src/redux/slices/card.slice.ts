@@ -10,9 +10,6 @@ interface CartAddState {
 
 interface CartRemoveState {
   id: string | number;
-  name: string;
-  image: string;
-  info: string;
 }
 
 const initialState: CartAddState[] = [];
@@ -30,7 +27,12 @@ export const cartSlice = createSlice({
         state.push(action.payload);
       }
     },
-    removeFromCart: (state, action: PayloadAction<CartRemoveState>) => {},
+    removeFromCart: (state, action: PayloadAction<CartRemoveState>) => {
+      const { id } = action.payload;
+      if (state.some((item) => item.id === id)) {
+        return (state = state.filter((item) => item.id !== id));
+      }
+    },
   },
 });
 

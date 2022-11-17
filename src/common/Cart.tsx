@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { HorizontalCardComponent } from "../components";
+import { useAppSelector } from "../redux/hooks";
 
 interface CartComponentProps {
   open: boolean;
@@ -18,6 +19,8 @@ export const CartComponent: React.FC<CartComponentProps> = ({
   open,
   handleStateViewDrawer,
 }) => {
+  const items = useAppSelector((state) => state.cartReducer);
+
   return (
     <Drawer anchor={"right"} open={open}>
       <Box sx={{ width: "25em", p: 2 }}>
@@ -32,8 +35,8 @@ export const CartComponent: React.FC<CartComponentProps> = ({
           </IconButton>
         </Stack>
         <Divider sx={{ my: 1.5 }} />
-        {[].length > 0
-          ? [].map(({ id, image, name, info }) => (
+        {items.length > 0
+          ? items.map(({ id, image, name, info }) => (
               <HorizontalCardComponent
                 key={id}
                 id={id}

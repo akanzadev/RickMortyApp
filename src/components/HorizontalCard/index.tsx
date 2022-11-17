@@ -9,6 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { useAppDispatch } from "../../redux/hooks";
+import { removeFromCart } from "../../redux/slices/card.slice";
 
 interface CardHorizntalComponentProps {
   id: string | number;
@@ -23,7 +25,10 @@ export const HorizontalCardComponent: React.FC<CardHorizntalComponentProps> = ({
   name,
   info,
 }) => {
-  const handleRemoveToCart = () => {};
+  const dispatch = useAppDispatch();
+  const handleRemoveToCart = () => {
+    dispatch(removeFromCart({ id }));
+  };
   return (
     <Card sx={{ display: "flex", my: 2 }}>
       <CardMedia
