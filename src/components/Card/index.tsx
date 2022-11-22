@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { addToCart } from "../../redux/slices/card.slice";
 import { useEffect, useState } from "react";
+import { setItem } from "../../utils/localStorage";
 
 type CardProps = {
   id: number | string;
@@ -35,6 +36,7 @@ export const CardComponent: React.FC<CardProps> = ({
 
   useEffect(() => {
     setDisabledBtn(itemExist.some((item) => item.id === id));
+    setItem("cart", itemExist);
   }, [itemExist, id]);
 
   const handleAddToCart = () => {
